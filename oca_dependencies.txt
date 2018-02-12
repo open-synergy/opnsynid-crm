@@ -14,4 +14,5 @@
 # To provide both the URL and a branch, use:
 # sale-workflow https://github.com/OCA/sale-workflow branchname
 opnsynid-stock-logistics-warehouse https://github.com/open-synergy/opnsynid-stock-logistics-warehouse 8.0
+oca_crm https://github.com/OCA/crm 8.0
 
