@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="letter_folder_view_form" model="ir.ui.view">
+            <field name="name">Inherit : Letter Folder Seqence Form </field>
+            <field name="model">letter.folder</field>
+            <field name="inherit_id" ref="lettermgmt.letter_folder_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="sequence_id"/>
+                </xpath>
+           </field>
+        </record>
+    </data>
+</openerp>
