@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<openerp>
+<data>
+<record id="crm_case_section_view_form" model="ir.ui.view">
+    <field name="name">crm.case.section - Strike Zone form</field>
+    <field name="model">crm.case.section</field>
+    <field name="inherit_id" ref="sales_team.crm_case_section_view_form"/>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//field[@name='active']" position="before">
+                <field name="average_deal_size_won"/>
+            </xpath>
+        </data>
+    </field>
+</record>
+</data>
+</openerp>
+
