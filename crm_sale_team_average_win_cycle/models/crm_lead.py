@@ -47,7 +47,7 @@ class CrmLead(models.Model):
         store=True,
     )
     over_team_avg_win_cycle = fields.Boolean(
-        string="Over Team Average Deal Size Won",
+        string="Over Team Average Win Cycle",
         compute="_compute_over_average",
         store=True,
     )
