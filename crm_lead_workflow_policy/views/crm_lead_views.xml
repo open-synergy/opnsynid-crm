@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_case_form_view_oppor" model="ir.ui.view">
+        <field name="name">crm.lead.form.opportunity.workflow.policy</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="page_workflow_policy" string="Policy" groups="base.group_system">
+                    <group name="grp_workflow_policy">
+                        <field name="won_ok"/>
+                        <field name="lost_ok"/>
+                        <field name="archieve_ok"/>
+                        <field name="restore_ok"/>
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//button[@name='action_set_won_rainbowman']" position="attributes">
+                <attribute name="attrs">
+                    {'invisible':['|', '|', ('active','=',False), ('probability', '=', 100), ('won_ok','=',False)]}
+                </attribute>
+            </xpath>
+            <xpath expr="//button[@name='%(crm.crm_lead_lost_action)d']" position="attributes">
+                <attribute name="attrs">
+                    {'invisible':['|', '&amp;', ('active','=',False), ('probability', '&lt;', 100), ('lost_ok','=',False)]}
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

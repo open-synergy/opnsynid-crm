@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sales_team_form_view_in_crm" model="ir.ui.view">
+        <field name="name">crm.team.form.workflow.policy</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="crm.sales_team_form_view_in_crm"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="policy" string="Workflow Policy">
+                    <group name="group_workflow_policy" colspan="4" col="2">
+                        <field name="lead_won_group_ids" widget="many2many_tags"/>
+                        <field name="lead_lost_group_ids" widget="many2many_tags"/>
+                        <field name="lead_archieve_group_ids" widget="many2many_tags"/>
+                        <field name="lead_restore_group_ids" widget="many2many_tags"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
