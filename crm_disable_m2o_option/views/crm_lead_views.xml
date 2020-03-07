@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_case_form_view_oppor" model="ir.ui.view">
+        <field name="name">crm.lead.form.opportunity.disable.m2o</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="options">
+                    {
+                      'limit': 10,
+                      'create': false,
+                      'create_edit': false,
+                      'no_open': true,
+                      'no_open_edit': true,
+                      'search_more': true
+                    }
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="options">
+                    {
+                      'limit': 10,
+                      'create': false,
+                      'create_edit': false,
+                      'no_open': true,
+                      'no_open_edit': true,
+                      'search_more': true
+                    }
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='tag_ids']" position="attributes">
+                <attribute name="options">
+                    {
+                      'color_field': 'color',
+                      'limit': 10,
+                      'create': false,
+                      'create_edit': false,
+                      'no_open': true,
+                      'no_open_edit': true,
+                      'search_more': true
+                    }
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='title']" position="attributes">
+                <attribute name="options">
+                    {
+                      'limit': 10,
+                      'create': false,
+                      'create_edit': false,
+                      'no_open': true,
+                      'no_open_edit': true,
+                      'search_more': true
+                    }
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='state_id']" position="attributes">
+                <attribute name="options">
+                    {
+                      'limit': 10,
+                      'create': false,
+                      'create_edit': false,
+                      'no_open': true,
+                      'no_open_edit': true,
+                      'search_more': true
+                    }
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='country_id']" position="attributes">
+                <attribute name="options">
+                    {
+                      'limit': 10,
+                      'create': false,
+                      'create_edit': false,
+                      'no_open': true,
+                      'no_open_edit': true,
+                      'search_more': true
+                    }
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='campaign_id']" position="attributes">
+                <attribute name="options">
+                    {
+                      'limit': 10,
+                      'create': false,
+                      'create_edit': false,
+                      'no_open': true,
+                      'no_open_edit': true,
+                      'search_more': true
+                    }
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='medium_id']" position="attributes">
+                <attribute name="options">
+                    {
+                      'limit': 10,
+                      'create': false,
+                      'create_edit': false,
+                      'no_open': true,
+                      'no_open_edit': true,
+                      'search_more': true
+                    }
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='source_id']" position="attributes">
+                <attribute name="options">
+                    {
+                      'limit': 10,
+                      'create': false,
+                      'create_edit': false,
+                      'no_open': true,
+                      'no_open_edit': true,
+                      'search_more': true
+                    }
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_create_opportunity_simplified" model="ir.ui.view">
+        <field name="name">crm.lead.form.opportunity.disable.m2o</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_create_opportunity_simplified"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="options">
+                    {
+                      'limit': 10,
+                      'create': false,
+                      'create_edit': false,
+                      'no_open': true,
+                      'no_open_edit': true,
+                      'search_more': true
+                    }
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
