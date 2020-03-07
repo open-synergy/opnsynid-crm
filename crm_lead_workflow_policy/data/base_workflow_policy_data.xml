@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 OpenSynergy Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <record id="base_workflow_crm_lead" model="base.workflow_policy">
+        <field name="model_id" ref="crm.model_crm_lead"/>
+    </record>
+    <record id="base_workflow_line_crm_lead_won" model="base.workflow_policy_line">
+        <field name="workflow_id" ref="crm_lead_workflow_policy.base_workflow_crm_lead"/>
+        <field name="field_id" search="[('model_id.model','=','crm.lead'),('name','=','won_ok')]"/>
+        <field name="python_code">result = document.team_id.lead_won_group_ids.ids</field>
+    </record>
+    <record id="base_workflow_line_crm_lead_lost" model="base.workflow_policy_line">
+        <field name="workflow_id" ref="crm_lead_workflow_policy.base_workflow_crm_lead"/>
+        <field name="field_id" search="[('model_id.model','=','crm.lead'),('name','=','lost_ok')]"/>
+        <field name="python_code">result = document.team_id.lead_lost_group_ids.ids</field>
+    </record>
+    <record id="base_workflow_line_crm_lead_archieve" model="base.workflow_policy_line">
+        <field name="workflow_id" ref="crm_lead_workflow_policy.base_workflow_crm_lead"/>
+        <field name="field_id" search="[('model_id.model','=','crm.lead'),('name','=','archieve_ok')]"/>
+        <field name="python_code">result = document.team_id.lead_archieve_group_ids.ids</field>
+    </record>
+    <record id="base_workflow_line_crm_lead_restore" model="base.workflow_policy_line">
+        <field name="workflow_id" ref="crm_lead_workflow_policy.base_workflow_crm_lead"/>
+        <field name="field_id" search="[('model_id.model','=','crm.lead'),('name','=','restore_ok')]"/>
+        <field name="python_code">result = document.team_id.lead_restore_group_ids.ids</field>
+    </record>
+</odoo>
