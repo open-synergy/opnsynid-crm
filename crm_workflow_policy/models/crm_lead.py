@@ -49,7 +49,7 @@ class CRMLead(models.Model):
     )
     def _check_allowed_won(self):
         for document in self:
-            if document.probability == 100 and document.won_ok == False:
+            if document.probability == 100 and document.won_ok is False:
                 raise UserError(_("User is not allowed to Mark Won"))
         return {}
 
@@ -62,8 +62,8 @@ class CRMLead(models.Model):
         for document in self:
             if (
                 document.probability == 0 and
-                document.lost_ok == False and
-                document.active == False
+                document.lost_ok is False and
+                document.active is False
             ):
                 raise UserError(_("User is not allowed to Mark Lost"))
         return {}
@@ -75,8 +75,8 @@ class CRMLead(models.Model):
     def _check_allowed_archive(self):
         for document in self:
             if (
-                document.archieve_ok == False and
-                document.active == False
+                document.archieve_ok is False and
+                document.active is False
             ):
                 raise UserError(_("User is not allowed to Archive"))
         return {}
@@ -88,8 +88,8 @@ class CRMLead(models.Model):
     def _check_allowed_restore(self):
         for document in self:
             if (
-                document.restore_ok == False and
-                document.active == True
+                document.restore_ok is False and
+                document.active
             ):
                 raise UserError(_("User is not allowed to Restore"))
         return {}
