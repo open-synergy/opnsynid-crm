@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sales_team_form_view_in_crm" model="ir.ui.view">
+        <field name="name">crm.team.form.workflow.policy</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="crm.sales_team_form_view_in_crm"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="auto_archieve" string="Auto Archieve">
+                    <group name="group_auto_archieve" colspan="4" col="2">
+                        <label for="cron_id"/>
+                        <div>
+                            <field name="cron_id"/>
+                            <button name="action_create_cron"
+                                type="object"
+                                string="(create)"
+                                class="oe_link"
+                                attrs="{'invisible':[('cron_id','!=',False)]}"
+                            />
+                            <button name="action_delete_cron"
+                                type="object"
+                                string="(delete)"
+                                class="oe_link"
+                                attrs="{'invisible':[('cron_id','=',False)]}"
+                            />
+                        </div>
+                        <field name="stage_auto_archieve_ids">
+                            <tree string="Auto Archieve" editable="bottom">
+                                <field name="stage_id"/>
+                                <field name="day_limit"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
