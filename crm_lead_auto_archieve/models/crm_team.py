@@ -51,17 +51,18 @@ class CRMTeam(models.Model):
             "numbercall": -1,
             "doall": False,
             "model_id": self.env.ref("crm.model_crm_team").id,
-            "code": "model.cron_auto_archieve()",
+            "code": "model.cron_auto_archieve(%s)" % (self.id),
             "state": "code",
         }
 
     @api.model
-    def cron_auto_archieve(self):
-        team_id = self.search([("active", "=", True)])[0]
+    def cron_auto_archieve(self, team_id):
+        team_id = self.search([("id", "=", team_id)])[0]
         team_id._auto_archieve()
 
     @api.multi
     def _auto_archieve(self):
+        self.ensure_one()
         obj_crm_lead = self.env["crm.lead"]
         for auto_archieve in self.stage_auto_archieve_ids:
             criteria = [
@@ -69,7 +70,7 @@ class CRMTeam(models.Model):
                 ("day_on_stage", ">", auto_archieve.day_limit),
                 ("active", "=", True),
             ]
-            lead_ids = obj_crm_lead.search(criteria)
-            if lead_ids:
-                for lead in lead_ids:
+            leads = obj_crm_lead.search(criteria)
+            if leads:
+                for lead in leads:
                     lead.write({"active": False})
