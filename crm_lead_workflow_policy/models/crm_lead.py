@@ -87,6 +87,10 @@ class CRMLead(models.Model):
     )
     def _check_allowed_restore(self):
         for document in self:
+            # To Prevent Constraints for A New Data
+            if document.create_date == fields.Datetime.now():
+                continue
+
             if (
                 not document.restore_ok and
                 document.active
