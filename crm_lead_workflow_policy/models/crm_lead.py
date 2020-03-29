@@ -42,6 +42,11 @@ class CRMLead(models.Model):
         compute="_compute_policy",
         store=False,
     )
+    show_detail_ok = fields.Boolean(
+        string="Can Show Detail",
+        compute="_compute_policy",
+        store=False,
+    )
 
     @api.multi
     @api.constrains(
