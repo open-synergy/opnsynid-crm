@@ -12,6 +12,7 @@
                         <field name="lead_lost_group_ids" widget="many2many_tags"/>
                         <field name="lead_archieve_group_ids" widget="many2many_tags"/>
                         <field name="lead_restore_group_ids" widget="many2many_tags"/>
+                        <field name="lead_show_detail_group_ids" widget="many2many_tags"/>
                     </group>
                 </page>
             </xpath>
