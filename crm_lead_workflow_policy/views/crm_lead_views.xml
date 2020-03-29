@@ -12,8 +12,21 @@
                         <field name="lost_ok"/>
                         <field name="archieve_ok"/>
                         <field name="restore_ok"/>
+                        <field name="show_detail_ok"/>
                     </group>
                 </page>
+            </xpath>
+
+            <xpath expr="//field[@name='email_from']" position="attributes">
+                <attribute name="attrs">{'invisible':[('show_detail_ok','=',False)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="attrs">{'invisible':[('show_detail_ok','=',False)]}</attribute>
+            </xpath>
+
+            <xpath expr="//notebook" position="attributes">
+                <attribute name="attrs">{'invisible':[('show_detail_ok','=',False)]}</attribute>
             </xpath>
 
             <xpath expr="//button[@name='action_set_won_rainbowman']" position="attributes">

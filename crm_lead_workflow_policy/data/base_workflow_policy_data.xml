@@ -26,4 +26,9 @@
         <field name="field_id" search="[('model_id.model','=','crm.lead'),('name','=','restore_ok')]"/>
         <field name="python_code">result = document.team_id.lead_restore_group_ids.ids</field>
     </record>
+    <record id="base_workflow_line_crm_lead_show_detail" model="base.workflow_policy_line">
+        <field name="workflow_id" ref="crm_lead_workflow_policy.base_workflow_crm_lead"/>
+        <field name="field_id" search="[('model_id.model','=','crm.lead'),('name','=','show_detail_ok')]"/>
+        <field name="python_code">result = document.team_id.lead_show_detail_group_ids.ids</field>
+    </record>
 </odoo>

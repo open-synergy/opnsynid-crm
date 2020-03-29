@@ -36,3 +36,10 @@ class CRMTeam(models.Model):
         column1="team_id",
         column2="group_id",
     )
+    lead_show_detail_group_ids = fields.Many2many(
+        string="Allowed to Show Detail",
+        comodel_name="res.groups",
+        relation="rel_team_show_detail_groups",
+        column1="team_id",
+        column2="group_id",
+    )
