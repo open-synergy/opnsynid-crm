@@ -17,8 +17,10 @@ class CRMLead(models.Model):
     @api.multi
     def _compute_last_update_openchatter(self):
         for document in self:
-            document.last_update_openchatter = \
-                document.message_ids[0].create_date
+            document.last_update_openchatter = False
+            if len(document.message_ids) > 0:
+                document.last_update_openchatter = \
+                    document.message_ids[0].create_date
 
     last_update_openchatter = fields.Datetime(
         string="Last Update from OpenChatter",
