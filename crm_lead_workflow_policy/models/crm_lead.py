@@ -22,6 +22,28 @@ class CRMLead(models.Model):
         _super = super(CRMLead, self)
         _super._compute_policy()
 
+    @api.multi
+    def _compute_is_current_user_team(self):
+        for document in self:
+            result = False
+            if  (
+                document.user_id == self.env.user or
+                self.env.user.id in document.team_id.member_ids.ids
+                ):
+                result = True
+            document.is_current_user_team = result
+
+    current_user_id = fields.Many2one(
+        string="Current User",
+        comodel_name="res.users",
+        compute="_compute_current_user_id",
+        store=False,
+    )
+    is_current_user_team = fields.Boolean(
+        string="Is Salesperson or Team",
+        compute="_compute_is_current_user_team",
+        store=False,
+    )
     won_ok = fields.Boolean(
         string="Can Won",
         compute="_compute_policy",
@@ -67,8 +89,7 @@ class CRMLead(models.Model):
         for document in self:
             if (
                 document.probability == 0 and
-                not document.lost_ok and
-                not document.active
+                not document.lost_ok
             ):
                 raise UserError(_("User is not allowed to Mark Lost"))
         return {}
