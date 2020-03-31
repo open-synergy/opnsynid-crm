@@ -8,6 +8,7 @@
             <xpath expr="//notebook" position="inside">
                 <page name="page_workflow_policy" string="Policy" groups="base.group_system">
                     <group name="grp_workflow_policy">
+                        <field name="is_current_user_team"/>
                         <field name="won_ok"/>
                         <field name="lost_ok"/>
                         <field name="archieve_ok"/>
@@ -18,15 +19,15 @@
             </xpath>
 
             <xpath expr="//field[@name='email_from']" position="attributes">
-                <attribute name="attrs">{'invisible':[('show_detail_ok','=',False)]}</attribute>
+                <attribute name="attrs">{'invisible':[('show_detail_ok','=',False),('is_current_user_team','=',False)]}</attribute>
             </xpath>
 
             <xpath expr="//field[@name='phone']" position="attributes">
-                <attribute name="attrs">{'invisible':[('show_detail_ok','=',False)]}</attribute>
+                <attribute name="attrs">{'invisible':[('show_detail_ok','=',False),('is_current_user_team','=',False)]}</attribute>
             </xpath>
 
             <xpath expr="//notebook" position="attributes">
-                <attribute name="attrs">{'invisible':[('show_detail_ok','=',False)]}</attribute>
+                <attribute name="attrs">{'invisible':[('show_detail_ok','=',False),('is_current_user_team','=',False)]}</attribute>
             </xpath>
 
             <xpath expr="//button[@name='action_set_won_rainbowman']" position="attributes">
