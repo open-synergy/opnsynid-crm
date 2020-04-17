@@ -71,6 +71,39 @@ class CRMLead(models.Model):
     )
 
     @api.multi
+    def write(self, vals):
+        for record in self:
+            if "stage_id" in vals:
+                if not record._check_allowed_stage(vals):
+                    stage_name =\
+                        self._get_stage_name(vals.get("stage_id"))
+                    raise UserError(_(
+                        "Stage %s is not allowed "
+                        "to be changed to stage %s."
+                        % (record.stage_id.name, stage_name)))
+        return super(CRMLead, self).write(vals)
+
+    @api.multi
+    def _get_stage_name(self, stage_id):
+        result = ""
+        obj_crm_stage = self.env["crm.stage"]
+        if stage_id:
+            result =\
+                obj_crm_stage.browse(stage_id).name
+        return result
+
+    @api.multi
+    def _check_allowed_stage(self, vals):
+        self.ensure_one()
+        allowed_stage_ids = self.stage_id.allowed_stage_ids
+        if allowed_stage_ids:
+            if vals.get("stage_id") in allowed_stage_ids.ids:
+                return True
+            else:
+                return False
+        return True
+
+    @api.multi
     @api.constrains(
         "probability",
     )

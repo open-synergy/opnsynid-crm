@@ -4,7 +4,7 @@
 
 {
     "name": "CRM Lead Workflow Policy",
-    "version": "11.0.1.2.0",
+    "version": "11.0.1.3.0",
     "license": "AGPL-3",
     "category": "Customer Relationship Management",
     "website": "https://opensynergy-indonesia.com",
@@ -17,6 +17,7 @@
         "data/base_workflow_policy_data.xml",
         "views/crm_team_views.xml",
         "views/crm_lead_views.xml",
+        "views/crm_stage_views.xml",
     ],
     "installable": True,
     "auto_install": False,
