@@ -43,3 +43,10 @@ class CRMTeam(models.Model):
         column1="team_id",
         column2="group_id",
     )
+    lead_oppor_no_restrict_group_ids = fields.Many2many(
+        string="Allow To Move Opportunity Without Restriction",
+        comodel_name="res.groups",
+        relation="rel_team_oppor_no_restrict_groups",
+        column1="team_id",
+        column2="group_id",
+    )
