@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 OpenSynergy Indonesia
+     Copyright 2020 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+<record id="crm_lead_view_form" model="ir.ui.view">
+    <field name="name">crm.lead form - lead type</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="type_id"/>
+            </xpath>
+        </data>
+    </field>
+</record>
+
+<record id="crm_lead_view_tree" model="ir.ui.view">
+    <field name="name">crm.lead tree - lead type</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="type_id"/>
+            </xpath>
+        </data>
+    </field>
+</record>
+
+<record id="crm_lead_view_search" model="ir.ui.view">
+    <field name="name">crm.lead search - lead type</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="type_id"/>
+            </xpath>
+
+            <xpath expr="//group" position="inside">
+                <filter name="grp_type" string="Type" context="{'group_by':'type_id'}"/>
+            </xpath>
+        </data>
+    </field>
+</record>
+
+<record id="crm_lead_view_kanban" model="ir.ui.view">
+    <field name="name">crm.lead kanban - lead type</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//field[@name='user_id']" position="before">
+                <field name="type_id"/>
+            </xpath>
+
+            <xpath expr="//div[@class='oe_kanban_content']/div[1]" position="after">
+                <div>
+                    <field name="type_id"/>
+                </div>
+            </xpath>
+        </data>
+    </field>
+</record>
+
+
+
+
+
+
+
+</data>
+</openerp>
