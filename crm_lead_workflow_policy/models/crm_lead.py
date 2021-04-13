@@ -26,10 +26,10 @@ class CRMLead(models.Model):
     def _compute_is_current_user_team(self):
         for document in self:
             result = False
-            if  (
+            if (
                 document.user_id == self.env.user or
                 self.env.user.id in document.team_id.member_ids.ids
-                ):
+            ):
                 result = True
             document.is_current_user_team = result
 
