@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 OpenSynergy Indonesia
+     Copyright 2021 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<odoo>
+    <record id="crm_funnel_type_tree_view" model="ir.ui.view">
+        <field name="name">crm.funnel.type.view.tree</field>
+        <field name="model">crm.funnel_type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="crm_funnel_type_form_view" model="ir.ui.view">
+        <field name="name">crm.funnel.type.view.form</field>
+        <field name="model">crm.funnel_type</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_create_menu" type="object" string="Create Menu" class="oe_highlight" attrs="{'invisible':[('menu_id','&lt;&gt;',False),]}"/>
+                    <button name="action_delete_menu" type="object" string="Delete Menu" class="oe_highlight" attrs="{'invisible':[('menu_id','=',False)]}"/>
+                </header>
+                <sheet>
+                    <group name="group_1" colspan="4" col="2">
+                        <group name="group_1_1" colspan="1" col="2">
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="active"/>
+                        </group>
+                        <group name="group_1_2" colspan="1" col="2">
+                            <field name="user_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="page_members" string="Members">
+                            <field name="member_ids" colspan="4"/>
+                        </page>
+                        <page name="page_description" string="Description">
+                            <field name="description" colspan="4"/>
+                        </page>
+                        <page name="technical" string="Technical" groups="base.group_no_one">
+                            <group name="technical_1" colspan="1" col="2">
+                                <field name="window_action_id"/>
+                                <field name="menu_id"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="crm_funnel_type_action" model="ir.actions.act_window">
+        <field name="name">Funnel Type</field>
+        <field name="res_model">crm.funnel_type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="crm_funnel_type_menu"
+        name="Funnel Type"
+        parent="crm.crm_menu_config"
+        action="crm_funnel_type_action"
+        sequence="100" />
+
+</odoo>
