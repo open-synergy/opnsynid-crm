@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_crm_status_check_item","access_crm_status_check_item","model_crm_status_check_item",,1,1,1,1
+"access_crm_lead_status_check","access_crm_lead_status_check","model_crm_lead_status_check",,1,1,1,1
+"access_crm_status_check_template","access_crm_status_check_template","model_crm_status_check_template",,1,1,1,1
+"access_crm_status_check_template_detail","access_crm_status_check_template_detail","model_crm_status_check_template_detail",,1,1,1,1
