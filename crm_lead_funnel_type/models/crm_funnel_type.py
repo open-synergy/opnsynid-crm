@@ -56,8 +56,6 @@ class CRMFunnelType(models.Model):
     def _create_window_action(self):
         self.ensure_one()
         window_action = False
-        obj_act_window = \
-            self.env["ir.actions.act_window"]
 
         if not self.window_action_id:
             pipeline_waction_id = \
