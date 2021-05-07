@@ -56,23 +56,17 @@ class CRMFunnelType(models.Model):
     def _create_window_action(self):
         self.ensure_one()
         window_action = False
-        obj_act_window = \
-            self.env["ir.actions.act_window"]
 
         if not self.window_action_id:
-            res = {
-                "name": self.name,
-                "type": "ir.actions.act_window",
-                "domain": [("funnel_type_id", "=", self.id)],
-                "context": {
-                    "default_funnel_type_id": self.id,
-                },
-                "res_model": "crm.lead",
-                "view_type": "form",
-                "view_mode": "tree,form",
+            pipeline_waction_id = \
+                self.env.ref("crm.crm_lead_opportunities_tree_view")
+            new_waction = pipeline_waction_id.copy()
+            new_waction.name = self.name
+            new_waction.domain = [("funnel_type_id", "=", self.id)]
+            new_waction.context = {
+                "default_funnel_type_id": self.id,
             }
-
-            window_action = obj_act_window.create(res)
+            window_action = new_waction
 
         return window_action
 
