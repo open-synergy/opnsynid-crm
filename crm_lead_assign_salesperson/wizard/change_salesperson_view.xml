@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 OpenSynergy Indonesia
+     Copyright 2021 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+
+<odoo>
+    <data>
+
+        <record id="change_salesperson_view_form" model="ir.ui.view">
+            <field name="name">crm.lead.change_salesperson.form.view</field>
+            <field name="model">crm.lead.change_salesperson</field>
+            <field name="arch" type="xml">
+                <form string="Change Sales">
+                    <group>
+                        <field name="lead_id" readonly="1"/>
+                        <field name="user_id"/>
+                    </group>
+                    <footer>
+                      <button name="action_confirm"
+                              type="object"
+                              string="Confirm"
+                              class="oe_highlight"/>
+                      or
+                      <button special="cancel"
+                              string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="change_salesperson_action" model="ir.actions.act_window">
+            <field name="name">Change Salesperson</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">crm.lead.change_salesperson</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="change_salesperson_view_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- wizard action on lead context menu -->
+        <!-- <act_window id="crm_lead_salesperson_history__wizard_action"
+            name="Changed Salesperson"
+            src_model="crm.lead"
+            res_model="crm.lead.salesperson_history"
+            view_type="form" view_mode="form"
+            key2="client_action_multi" target="new"
+            groups="crm.group_use_lead"/> -->
+
+    </data>
+</odoo>
