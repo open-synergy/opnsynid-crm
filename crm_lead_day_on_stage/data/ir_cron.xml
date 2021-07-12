@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2020 OpenSynergy Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo noupdate="1">
     <record model="ir.cron" id="cron_compute_day_on_stage">
         <field name='name'>Compute Day On Stage</field>
-        <field name="model_id" ref="model_crm_lead"/>
+        <field name="model_id" ref="model_crm_lead" />
         <field name='interval_number'>1</field>
         <field name='interval_type'>days</field>
         <field name="numbercall">-1</field>
-        <field name="doall" eval="False"/>
+        <field name="doall" eval="False" />
         <field name="state">code</field>
         <field name="code">model.cron_update_day_on_stage()</field>
     </record>

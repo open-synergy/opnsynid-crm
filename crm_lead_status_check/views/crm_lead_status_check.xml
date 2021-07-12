@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2021 OpenSynergy Indonesia
      Copyright 2021 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
@@ -9,9 +9,9 @@
         <field name="model">crm.lead_status_check</field>
         <field name="arch" type="xml">
             <tree string="Status Check">
-                <field name="sequence"/>
-                <field name="status_check_item_id"/>
-                <field name="status_ok"/>
+                <field name="sequence" />
+                <field name="status_check_item_id" />
+                <field name="status_ok" />
             </tree>
         </field>
     </record>

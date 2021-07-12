@@ -1,10 +1,10 @@
-# -*- coding: utf-8 -*-
 # Copyright 2020 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, api, fields
-from datetime import datetime
 import logging
+from datetime import datetime
+
+from odoo import api, fields, models
 
 
 class CRMLead(models.Model):
@@ -17,15 +17,9 @@ class CRMLead(models.Model):
     def _compute_day_on_stage(self):
         dt_now = datetime.now()
         for document in self:
-            date_last_stage_update =\
-                document.date_last_stage_update
-            conv_date =\
-                datetime.strptime(
-                    date_last_stage_update,
-                    "%Y-%m-%d %H:%M:%S"
-                )
-            day_on_stage =\
-                abs((dt_now-conv_date).days)
+            date_last_stage_update = document.date_last_stage_update
+            conv_date = datetime.strptime(date_last_stage_update, "%Y-%m-%d %H:%M:%S")
+            day_on_stage = abs((dt_now - conv_date).days)
             document.day_on_stage = day_on_stage
 
     day_on_stage = fields.Float(

@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2021 OpenSynergy Indonesia
      Copyright 2021 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
-
 <odoo>
     <record id="crm_status_check_item_tree_view" model="ir.ui.view">
         <field name="name">crm.status.check.item.view.tree</field>
         <field name="model">crm.status_check_item</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="code"/>
-                <field name="name"/>
+                <field name="code" />
+                <field name="name" />
             </tree>
         </field>
     </record>
@@ -24,16 +23,16 @@
                 </header>
                 <sheet>
                     <group name="group_1" colspan="4" col="2">
-                        <field name="code"/>
-                        <field name="name"/>
-                        <field name="active"/>
+                        <field name="code" />
+                        <field name="name" />
+                        <field name="active" />
                     </group>
                     <notebook>
                         <page name="page_python_code" string="Python Code">
-                            <field name="python_code" colspan="4" widget="ace"/>
+                            <field name="python_code" colspan="4" widget="ace" />
                         </page>
                         <page name="page_description" string="Description">
-                            <field name="description" colspan="4"/>
+                            <field name="description" colspan="4" />
                         </page>
                     </notebook>
                 </sheet>
@@ -53,6 +52,7 @@
         name="Status Check Item"
         parent="crm_status_check_root_menu"
         action="crm_status_check_item_action"
-        sequence="1" />
+        sequence="1"
+    />
 
 </odoo>

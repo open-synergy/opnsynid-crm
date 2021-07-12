@@ -1,31 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2021 OpenSynergy Indonesia
      Copyright 2021 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
-
 <odoo>
     <data>
         <record id="crm_case_form_view_oppor_salesperson" model="ir.ui.view">
             <field name="name">crm.lead.form.assign.salesperson</field>
             <field name="model">crm.lead</field>
-            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor" />
             <field name="arch" type="xml">
                 <field name="user_id" position="replace">
-                    <label for="user_id" groups="base.group_user"/>
+                    <label for="user_id" groups="base.group_user" />
                     <span>
-                        <field name="user_id" class="oe_inline" readonly="1"
-                            groups="base.group_user"/>
-                        <button name="%(change_salesperson_action)d"
-                            string="⇒ Changed" type="action" class="oe_link" />
+                        <field
+                            name="user_id"
+                            class="oe_inline"
+                            readonly="1"
+                            groups="base.group_user"
+                        />
+                        <button
+                            name="%(change_salesperson_action)d"
+                            string="⇒ Changed"
+                            type="action"
+                            class="oe_link"
+                        />
                     </span>
                 </field>
                 <xpath expr="//notebook" position="inside">
                     <page name="page_salesperson" string="Salesperson History">
                         <group name="grp_salesperson" colspan="4" col="2">
-                            <field name="salesperson_history_ids" nolabel="1" readonly="1" >
-                                <tree string="" >
-                                    <field name="user_id"/>
-                                    <field name="create_date"/>
+                            <field
+                                name="salesperson_history_ids"
+                                nolabel="1"
+                                readonly="1"
+                            >
+                                <tree string="">
+                                    <field name="user_id" />
+                                    <field name="create_date" />
                                 </tree>
                             </field>
                         </group>
