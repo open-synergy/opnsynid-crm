@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2021 OpenSynergy Indonesia
 # Copyright 2021 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
@@ -15,7 +14,7 @@
     ],
     "data": [
         "security/ir.model.access.csv",
-        'wizard/change_salesperson_view.xml',
+        "wizard/change_salesperson_view.xml",
         "views/crm_lead_views.xml",
     ],
     "installable": True,

@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 # Copyright 2020 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api, _
+from odoo import _, api, fields, models
 from odoo.exceptions import Warning as UserError
 
 
@@ -31,10 +30,8 @@ class CRMStageAutoArchieve(models.Model):
     def _check_duplicate_stage(self):
         if self.stage_id:
             strWarning = _("No duplicate stage")
-            check_stage =\
-                self.search([
-                    ("team_id", "=", self.team_id.id),
-                    ("stage_id", "=", self.stage_id.id)
-                ])
+            check_stage = self.search(
+                [("team_id", "=", self.team_id.id), ("stage_id", "=", self.stage_id.id)]
+            )
             if len(check_stage) > 1:
                 raise UserError(strWarning)

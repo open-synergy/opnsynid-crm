@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 # Copyright 2020 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
 class CRMTeam(models.Model):
@@ -40,8 +39,7 @@ class CRMTeam(models.Model):
     @api.multi
     def _prepare_cron_data(self):
         self.ensure_one()
-        cron_name = "CRM Auto Archieve: %s" % (
-            self.name)
+        cron_name = "CRM Auto Archieve: %s" % (self.name)
         return {
             "name": cron_name,
             "user_id": self.env.user.id,

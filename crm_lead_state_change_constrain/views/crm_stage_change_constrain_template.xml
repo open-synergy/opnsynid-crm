@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2021 OpenSynergy Indonesia
      Copyright 2021 PT. Simetri Sinergi Indonesia
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
-
 <odoo>
     <record id="crm_stage_change_constrain_template_tree_view" model="ir.ui.view">
         <field name="name">crm.stage.change.constrain.template.view.tree</field>
         <field name="model">crm.stage_change_constrain_template</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="sequence" widget="handle"/>
-                <field name="code"/>
-                <field name="name"/>
+                <field name="sequence" widget="handle" />
+                <field name="code" />
+                <field name="name" />
             </tree>
         </field>
     </record>
@@ -21,35 +20,35 @@
         <field name="model">crm.stage_change_constrain_template</field>
         <field name="arch" type="xml">
             <form>
-                <header/>
+                <header />
                 <sheet>
                     <group name="group_1" colspan="4" col="2">
-                        <field name="code"/>
-                        <field name="name"/>
-                        <field name="sequence"/>
-                        <field name="active"/>
+                        <field name="code" />
+                        <field name="name" />
+                        <field name="sequence" />
+                        <field name="active" />
                     </group>
                     <notebook>
                         <page name="page_details" string="Details">
                             <field name="detail_ids">
                                 <tree name="Details">
-                                    <field name="sequence" widget="handle"/>
-                                    <field name="stage_id"/>
+                                    <field name="sequence" widget="handle" />
+                                    <field name="stage_id" />
                                 </tree>
                                 <form name="Details">
                                     <group name="group_1" colspan="4" col="2">
-                                        <field name="sequence"/>
-                                        <field name="stage_id"/>
-                                        <field name="status_check_item_ids"/>
+                                        <field name="sequence" />
+                                        <field name="stage_id" />
+                                        <field name="status_check_item_ids" />
                                     </group>
                                 </form>
                             </field>
                         </page>
                         <page name="page_python_code" string="Python Code">
-                            <field name="python_code" colspan="4" widget="ace"/>
+                            <field name="python_code" colspan="4" widget="ace" />
                         </page>
                         <page name="page_description" string="Description">
-                            <field name="description" colspan="4"/>
+                            <field name="description" colspan="4" />
                         </page>
                     </notebook>
                 </sheet>
@@ -57,7 +56,10 @@
         </field>
     </record>
 
-    <record id="crm_stage_change_constrain_template_action" model="ir.actions.act_window">
+    <record
+        id="crm_stage_change_constrain_template_action"
+        model="ir.actions.act_window"
+    >
         <field name="name">Stage Change Constrain Template</field>
         <field name="res_model">crm.stage_change_constrain_template</field>
         <field name="view_type">form</field>
@@ -69,6 +71,7 @@
         name="Template"
         parent="crm_stage_change_constrain_template_root_menu"
         action="crm_stage_change_constrain_template_action"
-        sequence="1" />
+        sequence="1"
+    />
 
 </odoo>

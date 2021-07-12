@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 # Copyright 2020 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, api, fields
+from odoo import api, fields, models
 
 
 class CRMLead(models.Model):
@@ -19,8 +18,7 @@ class CRMLead(models.Model):
         for document in self:
             document.last_update_openchatter = False
             if len(document.message_ids) > 0:
-                document.last_update_openchatter = \
-                    document.message_ids[0].create_date
+                document.last_update_openchatter = document.message_ids[0].create_date
 
     last_update_openchatter = fields.Datetime(
         string="Last Update from OpenChatter",

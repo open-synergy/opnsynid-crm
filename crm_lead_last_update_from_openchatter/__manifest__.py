@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2020 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
@@ -7,8 +6,8 @@
     "version": "11.0.1.1.0",
     "license": "AGPL-3",
     "category": "Customer Relationship Management",
-    "website": "https://opensynergy-indonesia.com",
-    "author": "OpenSynergy Indonesia",
+    "website": "https://simetri-sinergi.id",
+    "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
     "depends": [
         "crm",
     ],

@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 # Copyright 2021 OpenSynergy Indonesia
 # Copyright 2021 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from odoo import models, fields, api, _
+from odoo import _, api, fields, models
 from odoo.exceptions import Warning as UserError
 from odoo.tools.safe_eval import safe_eval as eval
 
@@ -11,8 +10,7 @@ class CRMLead(models.Model):
     _inherit = "crm.lead"
 
     status_check_template_id = fields.Many2one(
-        string="Status Check Template",
-        comodel_name="crm.status_check_template"
+        string="Status Check Template", comodel_name="crm.status_check_template"
     )
     status_check_ids = fields.One2many(
         string="Check Status",
@@ -27,8 +25,7 @@ class CRMLead(models.Model):
         "funnel_type_id",
     )
     def onchange_status_check_template_id(self):
-        obj_status_check_tmpl = \
-            self.env["crm.status_check_template"]
+        obj_status_check_tmpl = self.env["crm.status_check_template"]
         self.status_check_template_id = False
 
         template_ids = obj_status_check_tmpl.search(
@@ -53,10 +50,12 @@ class CRMLead(models.Model):
             if detail_ids:
                 for detail in detail_ids:
                     sequence += 1
-                    new = self.status_check_ids.new({
-                        "sequence": sequence,
-                        "status_check_item_id": detail.status_check_item.id,
-                    })
+                    new = self.status_check_ids.new(
+                        {
+                            "sequence": sequence,
+                            "status_check_item_id": detail.status_check_item.id,
+                        }
+                    )
                     res.append(new.id)
             self.status_check_ids = res
 
@@ -72,10 +71,8 @@ class CRMLead(models.Model):
         res = False
         localdict = self._get_localdict(self)
         try:
-            eval(template.python_code,
-                 localdict, mode="exec", nocopy=True)
+            eval(template.python_code, localdict, mode="exec", nocopy=True)
             res = localdict["result"]
         except Exception as error:
-            raise UserError(_(
-                "Error evaluating conditions.\n %s") % error)
+            raise UserError(_("Error evaluating conditions.\n %s") % error)
         return res

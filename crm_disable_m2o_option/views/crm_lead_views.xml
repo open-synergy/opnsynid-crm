@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="crm_case_form_view_oppor" model="ir.ui.view">
         <field name="name">crm.lead.form.opportunity.disable.m2o</field>
         <field name="model">crm.lead</field>
-        <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+        <field name="inherit_id" ref="crm.crm_case_form_view_oppor" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="attributes">
                 <attribute name="options">
@@ -120,7 +120,7 @@
     <record id="view_create_opportunity_simplified" model="ir.ui.view">
         <field name="name">crm.lead.form.opportunity.disable.m2o</field>
         <field name="model">crm.lead</field>
-        <field name="inherit_id" ref="crm.view_create_opportunity_simplified"/>
+        <field name="inherit_id" ref="crm.view_create_opportunity_simplified" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="attributes">
                 <attribute name="options">

@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 # Copyright 2021 OpenSynergy Indonesia
 # Copyright 2021 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
 class CRMFunnelType(models.Model):
@@ -58,8 +57,7 @@ class CRMFunnelType(models.Model):
         window_action = False
 
         if not self.window_action_id:
-            pipeline_waction_id = \
-                self.env.ref("crm.crm_lead_opportunities_tree_view")
+            pipeline_waction_id = self.env.ref("crm.crm_lead_opportunities_tree_view")
             new_waction = pipeline_waction_id.copy()
             new_waction.name = self.name
             new_waction.domain = [("funnel_type_id", "=", self.id)]
@@ -82,7 +80,7 @@ class CRMFunnelType(models.Model):
                 "name": self.name,
                 "sequence": 500,
                 "parent_id": parent_menu_id.id,
-                "action": "ir.actions.act_window,%s" % self.window_action_id.id
+                "action": "ir.actions.act_window,%s" % self.window_action_id.id,
             }
 
             menu = obj_ir_ui_menu.create(res)
@@ -92,8 +90,7 @@ class CRMFunnelType(models.Model):
     @api.multi
     def action_create_menu(self):
         self.ensure_one()
-        window_action =\
-            self._create_window_action()
+        window_action = self._create_window_action()
         self.window_action_id = window_action and window_action.id or False
 
         menu = self._create_menu()

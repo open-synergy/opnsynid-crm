@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2021 OpenSynergy Indonesia
 # Copyright 2021 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
@@ -18,7 +17,7 @@
         "security/res_groups_data.xml",
         "security/ir_rule_data.xml",
         "views/crm_lead_views.xml",
-        "views/crm_funnel_type_views.xml"
+        "views/crm_funnel_type_views.xml",
     ],
     "installable": True,
     "auto_install": False,

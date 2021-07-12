@@ -1,14 +1,13 @@
-# -*- coding: utf-8 -*-
 # Copyright 2021 OpenSynergy Indonesia
 # Copyright 2021 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields
+from odoo import fields, models
 
 
 class CRMLeadSalespersonHistory(models.Model):
-    _name = 'crm.lead.salesperson_history'
-    _description = 'Salesperson history'
+    _name = "crm.lead.salesperson_history"
+    _description = "Salesperson history"
 
     lead_id = fields.Many2one(
         string="Lead",

@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 # Copyright 2021 OpenSynergy Indonesia
 # Copyright 2021 PT. Simetri Sinergi Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from odoo import models, fields, api, _
+from odoo import _, api, fields, models
 from odoo.exceptions import Warning as UserError
 from odoo.tools.safe_eval import safe_eval as eval
 
@@ -28,15 +27,11 @@ class CRMLeadStatusCheck(models.Model):
     def _compute_status_ok(self):
         for document in self:
             document.status_ok = False
-            result = \
-                document._evaluate_python_code()
+            result = document._evaluate_python_code()
             if result:
                 document.status_ok = result
 
-    status_ok = fields.Boolean(
-        string="Status Ok",
-        compute="_compute_status_ok"
-    )
+    status_ok = fields.Boolean(string="Status Ok", compute="_compute_status_ok")
 
     def _get_localdict(self, document):
         self.ensure_one()
@@ -50,10 +45,13 @@ class CRMLeadStatusCheck(models.Model):
         res = False
         localdict = self._get_localdict(self)
         try:
-            eval(self.status_check_item_id.python_code,
-                 localdict, mode="exec", nocopy=True)
+            eval(
+                self.status_check_item_id.python_code,
+                localdict,
+                mode="exec",
+                nocopy=True,
+            )
             res = localdict["result"]
         except Exception as error:
-            raise UserError(_(
-                "Error evaluating conditions.\n %s") % error)
+            raise UserError(_("Error evaluating conditions.\n %s") % error)
         return res

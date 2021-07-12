@@ -1,18 +1,14 @@
-# -*- coding: utf-8 -*-
 # Copyright 2020 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, api, fields
+from odoo import api, fields, models
 from odoo.exceptions import Warning as UserError
 from odoo.tools.translate import _
 
 
 class CRMLead(models.Model):
     _name = "crm.lead"
-    _inherit = [
-        "crm.lead",
-        "base.workflow_policy_object"
-    ]
+    _inherit = ["crm.lead", "base.workflow_policy_object"]
 
     @api.multi
     @api.depends(
@@ -27,8 +23,8 @@ class CRMLead(models.Model):
         for document in self:
             result = False
             if (
-                document.user_id == self.env.user or
-                self.env.user.id in document.team_id.member_ids.ids
+                document.user_id == self.env.user
+                or self.env.user.id in document.team_id.member_ids.ids
             ):
                 result = True
             document.is_current_user_team = result
@@ -76,12 +72,14 @@ class CRMLead(models.Model):
             if record._check_allowed_oppor_no_restrict():
                 if "stage_id" in vals:
                     if not record._check_allowed_stage(vals):
-                        stage_name =\
-                            self._get_stage_name(vals.get("stage_id"))
-                        raise UserError(_(
-                            "Stage %s is not allowed "
-                            "to be changed to stage %s."
-                            % (record.stage_id.name, stage_name)))
+                        stage_name = self._get_stage_name(vals.get("stage_id"))
+                        raise UserError(
+                            _(
+                                "Stage %s is not allowed "
+                                "to be changed to stage %s."
+                                % (record.stage_id.name, stage_name)
+                            )
+                        )
         return super(CRMLead, self).write(vals)
 
     @api.multi
@@ -89,8 +87,7 @@ class CRMLead(models.Model):
         result = ""
         obj_crm_stage = self.env["crm.stage"]
         if stage_id:
-            result =\
-                obj_crm_stage.browse(stage_id).name
+            result = obj_crm_stage.browse(stage_id).name
         return result
 
     @api.multi
@@ -109,9 +106,10 @@ class CRMLead(models.Model):
         self.ensure_one()
         user = self.env.user
         group_ids = user.groups_id.ids
-        lead_oppor_no_restrict_group_ids =\
+        lead_oppor_no_restrict_group_ids = (
             self.team_id.lead_oppor_no_restrict_group_ids.ids
-        if (set(lead_oppor_no_restrict_group_ids) & set(group_ids)):
+        )
+        if set(lead_oppor_no_restrict_group_ids) & set(group_ids):
             return False
         return True
 
@@ -132,10 +130,7 @@ class CRMLead(models.Model):
     )
     def _check_allowed_lost(self):
         for document in self:
-            if (
-                document.probability == 0 and
-                not document.lost_ok
-            ):
+            if document.probability == 0 and not document.lost_ok:
                 raise UserError(_("User is not allowed to Mark Lost"))
         return {}
 
@@ -145,10 +140,7 @@ class CRMLead(models.Model):
     )
     def _check_allowed_archive(self):
         for document in self:
-            if (
-                not document.archieve_ok and
-                not document.active
-            ):
+            if not document.archieve_ok and not document.active:
                 raise UserError(_("User is not allowed to Archive"))
         return {}
 
@@ -162,9 +154,6 @@ class CRMLead(models.Model):
             if document.create_date == fields.Datetime.now():
                 continue
 
-            if (
-                not document.restore_ok and
-                document.active
-            ):
+            if not document.restore_ok and document.active:
                 raise UserError(_("User is not allowed to Restore"))
         return {}
