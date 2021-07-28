@@ -7,14 +7,15 @@
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
                 <page name="page_status_check" string="Check Status">
-                    <group name="grp_status_check_template_id" colspan="4" col="2">
-                        <field
-                            name="status_check_template_id"
-                            readonly="0"
-                            groups="crm_lead_status_check.crm_status_check_setting_group"
-                            force_save="1"
-                            nolabel="1"
-                        />
+                    <group name="grp_status_check_template_root" colspan="4" col="2">
+                        <group name="grp_status_check_template_1">
+                            <field
+                                name="status_check_template_id"
+                                readonly="0"
+                                groups="crm_lead_status_check.crm_status_check_setting_group"
+                                force_save="1"
+                            />
+                        </group>
                     </group>
                     <group name="grp_status_check" colspan="4" col="2">
                         <field name="status_check_ids" readonly="1" force_save="1" />

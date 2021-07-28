@@ -76,3 +76,17 @@ class CRMLead(models.Model):
         except Exception as error:
             raise UserError(_("Error evaluating conditions.\n %s") % error)
         return res
+
+    @api.multi
+    def close_dialog(self):
+        _super = super(CRMLead, self)
+        self.onchange_status_check_template_id()
+        self.onchange_status_check_ids()
+        return _super.close_dialog()
+
+    @api.multi
+    def edit_dialog(self):
+        _super = super(CRMLead, self)
+        self.onchange_status_check_template_id()
+        self.onchange_status_check_ids()
+        return _super.edit_dialog()
