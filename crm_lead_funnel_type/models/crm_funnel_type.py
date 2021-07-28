@@ -89,12 +89,12 @@ class CRMFunnelType(models.Model):
 
     @api.multi
     def action_create_menu(self):
-        self.ensure_one()
-        window_action = self._create_window_action()
-        self.window_action_id = window_action and window_action.id or False
+        for document in self:
+            window_action = document._create_window_action()
+            document.window_action_id = window_action and window_action.id or False
 
-        menu = self._create_menu()
-        self.menu_id = menu and menu.id or False
+            menu = document._create_menu()
+            document.menu_id = menu and menu.id or False
 
         return {
             "type": "ir.actions.client",
