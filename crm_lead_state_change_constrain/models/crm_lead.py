@@ -54,3 +54,15 @@ class CRMLead(models.Model):
                             item = status_check.status_check_item_id.name
                             msg_error = _("Check Status item: %s") % (item)
                             raise UserError(msg_error)
+
+    @api.multi
+    def close_dialog(self):
+        _super = super(CRMLead, self)
+        self.onchange_stage_change_constrain_template_id()
+        return _super.close_dialog()
+
+    @api.multi
+    def edit_dialog(self):
+        _super = super(CRMLead, self)
+        self.onchange_stage_change_constrain_template_id()
+        return _super.edit_dialog()
