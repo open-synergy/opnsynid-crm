@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 OpenSynergy Indonesia
+     Copyright 2021 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+    <record id="crm_case_form_view_oppor" model="ir.ui.view">
+        <field name="name">crm.lead.form.opportunity.stage.change.history</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_oppor" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="page_stage_change_history" string="Stage Change History">
+                    <group name="grp_stage_change_history_root" colspan="4" col="2">
+                        <separator string="History" colspan="4" />
+                        <field
+                            name="stage_history_ids"
+                            nolabel="1"
+                            readonly="1"
+                            force_save="1"
+                        >
+                            <tree>
+                                <field name="user_id" />
+                                <field name="stage_from_id" />
+                                <field name="stage_to_id" />
+                                <field name="date_change" />
+                            </tree>
+                        </field>
+                    </group>
+                    <group name="grp_stage_change_summary_root" colspan="4" col="2" invisible="1">
+                        <separator string="Summary" colspan="4" />
+                        <field
+                            name="stage_history_summary_ids"
+                            nolabel="1"
+                            readonly="1"
+                            force_save="1"
+                        >
+                            <tree>
+                                <field name="latest_user_id" />
+                                <field name="latest_stage_from_id" />
+                                <field name="latest_stage_to_id" />
+                                <field name="latest_date_change" />
+                                <field name="change_count" />
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
