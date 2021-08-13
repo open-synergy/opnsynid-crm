@@ -22,9 +22,10 @@ class CRMLead(models.Model):
     def _track_subtype(self, init_values):
         _super = super(CRMLead, self)
         self.ensure_one()
-        init_stage_id = init_values["stage_id"]
-        if init_stage_id and self.stage_id and self.stage_id.on_change:
-            self.create_stage_change_history(init_values["stage_id"].id)
+        if "stage_id" in init_values:
+            init_stage_id = init_values["stage_id"]
+            if init_stage_id and self.stage_id:
+                self.create_stage_change_history(init_values["stage_id"].id)
         return _super._track_subtype(init_values)
 
     @api.multi
