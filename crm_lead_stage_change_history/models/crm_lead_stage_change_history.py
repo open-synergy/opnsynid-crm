@@ -7,6 +7,7 @@ from odoo import fields, models
 class CRMLeadStageChangeHistory(models.Model):
     _name = "crm.lead_stage_change_history"
     _description = "CRM Lead Stage Change History"
+    _order = "lead_id, date_change"
 
     lead_id = fields.Many2one(
         string="# Lead",

@@ -26,7 +26,12 @@
                             </tree>
                         </field>
                     </group>
-                    <group name="grp_stage_change_summary_root" colspan="4" col="2" invisible="1">
+                    <group
+                        name="grp_stage_change_summary_root"
+                        colspan="4"
+                        col="2"
+                        invisible="0"
+                    >
                         <separator string="Summary" colspan="4" />
                         <field
                             name="stage_history_summary_ids"
@@ -36,7 +41,6 @@
                         >
                             <tree>
                                 <field name="latest_user_id" />
-                                <field name="latest_stage_from_id" />
                                 <field name="latest_stage_to_id" />
                                 <field name="latest_date_change" />
                                 <field name="change_count" />
