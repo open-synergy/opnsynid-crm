@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 OpenSynergy Indonesia
+     Copyright 2021 PT. Simetri Sinergi Indonesia
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+
+    <record id="action_mark_as_won" model="ir.actions.server">
+        <field name="name">Mark as won</field>
+        <field name="model_id" ref="model_crm_lead" />
+        <field name="binding_model_id" ref="crm.model_crm_lead" />
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    for document in records:
+      document.action_set_won_rainbowman()
+        </field>
+    </record>
+</odoo>
