@@ -71,13 +71,21 @@ class CRMLead(models.Model):
         for record in self:
             if record._check_allowed_oppor_no_restrict():
                 if "stage_id" in vals:
+                    stage_name = self._get_stage_name(vals.get("stage_id"))
                     if not record._check_allowed_stage(vals):
-                        stage_name = self._get_stage_name(vals.get("stage_id"))
                         raise UserError(
                             _(
                                 "Stage %s is not allowed "
                                 "to be changed to stage %s."
                                 % (record.stage_id.name, stage_name)
+                            )
+                        )
+                    if not record._check_allowed_group_stage(vals):
+                        user_name = self.env.user.name
+                        raise UserError(
+                            _(
+                                "User %s is not allowed "
+                                "to be changed to stage %s." % (user_name, stage_name)
                             )
                         )
         return super(CRMLead, self).write(vals)
@@ -89,6 +97,21 @@ class CRMLead(models.Model):
         if stage_id:
             result = obj_crm_stage.browse(stage_id).name
         return result
+
+    @api.multi
+    def _check_allowed_group_stage(self, vals):
+        self.ensure_one()
+        obj_crm_stage = self.env["crm.stage"]
+        stage_id = obj_crm_stage.browse(vals.get("stage_id"))
+        allowed_group_stage_ids = stage_id.allowed_group_stage_ids.ids
+        user = self.env.user
+        group_ids = user.groups_id.ids
+        if allowed_group_stage_ids:
+            if set(allowed_group_stage_ids) & set(group_ids):
+                return True
+            else:
+                return False
+        return True
 
     @api.multi
     def _check_allowed_stage(self, vals):
