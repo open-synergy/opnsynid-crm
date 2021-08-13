@@ -3,7 +3,7 @@
 
 {
     "name": "CRM Lead Workflow Policy",
-    "version": "11.0.1.3.1",
+    "version": "11.0.1.4.1",
     "license": "AGPL-3",
     "category": "Customer Relationship Management",
     "website": "https://simetri-sinergi.id",
