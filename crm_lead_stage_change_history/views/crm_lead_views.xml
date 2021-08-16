@@ -39,7 +39,9 @@
                             readonly="1"
                             force_save="1"
                         >
-                            <tree>
+                            <tree
+                                default_order='latest_user_id, latest_date_change DESC'
+                            >
                                 <field name="latest_user_id" />
                                 <field name="latest_stage_to_id" />
                                 <field name="latest_date_change" />
