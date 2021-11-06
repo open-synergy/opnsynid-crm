@@ -7,7 +7,7 @@
     "name": "CRM Lead Product Catalog",
     "version": "8.0.1.0.0",
     "website": "https://simetri-sinergi.id",
-    "author": "PT. Simetri Sinergi Indonesia,OpenSynergy Indonesia",
+    "author": "PT. Simetri Sinergi Indonesia, OpenSynergy Indonesia",
     "license": "AGPL-3",
     "installable": True,
     "depends": [

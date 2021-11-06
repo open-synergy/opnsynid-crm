@@ -2,7 +2,7 @@
 # Copyright 2019 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import models, api, fields
+from openerp import api, fields, models
 
 
 class CreateMasterProject(models.TransientModel):
@@ -45,9 +45,11 @@ class CreateMasterProject(models.TransientModel):
         lead = self.lead_id
         return {
             "name": self.name or lead.name,
-            "partner_id": lead.partner_id and
-            lead.partner_id.commercial_partner_id.id or False,
-            "parent_id": self.parent_analytic_id and
-            self.parent_analytic_id.id or False,
+            "partner_id": lead.partner_id
+            and lead.partner_id.commercial_partner_id.id
+            or False,
+            "parent_id": self.parent_analytic_id
+            and self.parent_analytic_id.id
+            or False,
             "user_id": lead.user_id.id,
         }

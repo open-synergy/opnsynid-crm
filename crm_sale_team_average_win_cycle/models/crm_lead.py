@@ -3,7 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from datetime import datetime
-from openerp import models, api, fields
+
+from openerp import api, fields, models
 
 
 class CrmLead(models.Model):
@@ -11,34 +12,40 @@ class CrmLead(models.Model):
 
     @api.multi
     @api.depends(
-        "create_date", "stage_id",
+        "create_date",
+        "stage_id",
         "date_closed",
     )
     def _compute_day_elapsed(self):
         for lead in self:
             lead.day_elapsed = 0.0
-            if lead.section_id and lead.type == "opportunity" and \
-                    lead.stage_id.probability != 100.00:
+            if (
+                lead.section_id
+                and lead.type == "opportunity"
+                and lead.stage_id.probability != 100.00
+            ):
                 lead.day_elapsed = lead.day_close
             else:
-                date_create = datetime.strptime(
-                    lead.create_date, "%Y-%m-%d %H:%M:%S")
+                date_create = datetime.strptime(lead.create_date, "%Y-%m-%d %H:%M:%S")
                 today = datetime.now()
                 lead.day_elapsed = (today - date_create).days
 
     @api.multi
     @api.depends(
-        "section_id", "date_closed",
+        "section_id",
+        "date_closed",
         "stage_id",
         "section_id.win_cycle",
     )
     def _compute_win_cycle(self):
         for lead in self:
             lead.over_team_avg_win_cycle = False
-            if lead.section_id and lead.type == "opportunity" and \
-                    lead.stage_id.probability != 100.00:
-                if lead.day_elapsed > \
-                        lead.section_id.average_win_cycle:
+            if (
+                lead.section_id
+                and lead.type == "opportunity"
+                and lead.stage_id.probability != 100.00
+            ):
+                if lead.day_elapsed > lead.section_id.average_win_cycle:
                     lead.over_team_avg_win_cycle = True
 
     day_elapsed = fields.Float(

@@ -2,7 +2,7 @@
 # Copyright 2017 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, api, fields
+from openerp import api, fields, models
 
 
 class CrmCaseSection(models.Model):
@@ -22,8 +22,7 @@ class CrmCaseSection(models.Model):
             opportunities = obj_lead.search(criteria)
             if len(opportunities) > 0:
                 day_close = opportunities.mapped("day_close")
-                team.average_win_cycle = sum(
-                    day_close) / float(len(day_close))
+                team.average_win_cycle = sum(day_close) / float(len(day_close))
 
     average_win_cycle = fields.Float(
         string="Average Win Cycle",
