@@ -2,7 +2,7 @@
 # Copyright 2017 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, api, fields
+from openerp import api, fields, models
 
 
 class CrmCaseSection(models.Model):
@@ -22,8 +22,9 @@ class CrmCaseSection(models.Model):
             opportunities = obj_lead.search(criteria)
             if len(opportunities) > 0:
                 planned_revenues = opportunities.mapped("planned_revenue")
-                team.average_deal_size_won = sum(
-                    planned_revenues) / float(len(planned_revenues))
+                team.average_deal_size_won = sum(planned_revenues) / float(
+                    len(planned_revenues)
+                )
 
     average_deal_size_won = fields.Float(
         string="Average Deal Size Won",

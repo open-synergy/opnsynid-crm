@@ -8,7 +8,4 @@ from openerp import fields, models
 class LetterFolder(models.Model):
     _inherit = "letter.folder"
 
-    sequence_id = fields.Many2one(
-        string="Sequence",
-        comodel_name="ir.sequence"
-    )
+    sequence_id = fields.Many2one(string="Sequence", comodel_name="ir.sequence")
