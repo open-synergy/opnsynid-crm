@@ -15,3 +15,4 @@
 
 web https://github.com/OCA/web 11.0
 opnsynid-server-tools https://github.com/open-synergy/opnsynid-server-tools 11.0
+ssi-mixin https://github.com/open-synergy/ssi-mixin 11.0
