@@ -20,13 +20,13 @@ class CRMLead(models.Model):
             if (
                 len(
                     document.message_ids.filtered(
-                        lambda r: r.create_uid != SUPERUSER_ID
+                        lambda r: r.create_uid.id != SUPERUSER_ID
                     )
                 )
                 > 0
             ):
                 document.last_update_openchatter = document.message_ids.filtered(
-                    lambda r: r.create_uid != SUPERUSER_ID
+                    lambda r: r.create_uid.id != SUPERUSER_ID
                 )[0].create_date
 
     last_update_openchatter = fields.Datetime(
